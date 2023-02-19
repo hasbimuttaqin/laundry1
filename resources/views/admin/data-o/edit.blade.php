@@ -47,17 +47,17 @@
             @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Outlet</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="{{ $outlet->nama_outlet }}">
+                <input type="text" class="form-control" id="nama_outlet" name="nama_outlet" value="{{ $outlet->nama_outlet }}">
               </div>
 
             <div class="mb-4">
                 <label for="alamat" class="form-label">Alamat Outlet</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $outlet->alamat_outlet }}">
+                <input type="text" class="form-control" id="alamat_outlet" name="alamat_outlet" value="{{ $outlet->alamat_outlet }}">
               </div>
 
               <div class="mb-3">
                 <label for="notlp" class="form-label">No Telpon</label>
-                <input type="number" class="form-control" id="notelp" name="no_tlp" value="{{ $outlet->no_telp }}">
+                <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{ $outlet->no_telp }}">
               </div>
 
               <a href="{{ route('outlet') }}" class="btn btn-secondary">Back</a>

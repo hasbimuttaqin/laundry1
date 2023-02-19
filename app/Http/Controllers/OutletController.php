@@ -47,15 +47,14 @@ class OutletController extends Controller
     public function ubah(Request $request, $id)
     {
 
-        // $validatedData = $request->validate([
-        //     'nama_outlet' => 'required',
-        //     'alamat_outlet' => 'required',
-        //     'no_telp' => 'required'
-        // ]);
+        $request->validate([
+            'nama_outlet' => 'required',
+            'alamat_outlet' => 'required',
+            'no_telp' => 'required'
+        ]);
 
        $outlet =Outlett::find($id);
        $outlet->update($request->all());
-       dd($outlet);
 
 
 
