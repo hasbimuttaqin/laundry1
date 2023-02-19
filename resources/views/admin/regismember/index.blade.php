@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registrasi Pelanggan</title>
+
+    @include('template.head')
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+          @include('template.sidebar')
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+                <!-- Topbar -->
+                  @include('template.navbar')
+                <!-- End of Topbar -->
+
+<!-- Begin Page Content -->
+   <div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Registrasi Pelanggan</h1>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+   </div>
+
+<div class="container">
+    <div class="row">
+
+        {{-- FORM REGISTRASI --}}
+        <div class="col-md-4">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Form Register Pelanggan</h6>
+                    </div>
+                    <div class="card-body">
+
+                      <form action="/insert" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama Pelanggan</label>
+                            <input type="text" class="form-control" id="nama" name="nama">
+                          </div>
+
+                        <div class="mb-4">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat">
+                          </div>
+
+                        <div class="mb-3">
+                            <label for="jeniskelamin" class="form-label">Jenis Kelamin</label>
+                            <select class="form-select" aria-label="Default select example" name="jenis_kelamin">
+                                <option selected>Pilih Jenis Kelamin</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                              </select>
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="notlp" class="form-label">No Telpon</label>
+                            <input type="number" class="form-control" id="notelp" name="no_tlp">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Save</button>
+                      </form>
+
+                    </div>
+                </div>
+
+        </div>
+
+
+             {{-- TABEL --}}
+             <div class="col-md-8">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Tabel Pelanggan</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Telp</th>
+                                    </tr>
+                                </thead>
+
+                                @php
+                                    $no = 1
+                                @endphp
+
+                                 @foreach ($data as $item)
+
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->jenis_kelamin }}</td>
+                                        <td>{{ $item->no_tlp }}</td>
+                                    </tr>
+                                </tbody>
+
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- JavaScript --}}
+      @include('template.script')
+    {{-- End-JavaScript --}}
+
+</body>
+
+</html>
