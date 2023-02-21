@@ -10,10 +10,15 @@ use Illuminate\Http\Request;
 
 class OutletController extends Controller
 {
-      public function index()
+      public function index(Request $request)
     {
 
-        $outlet = Outlett::all();
+        if($request->has('search')){
+            $outlet = Outlett::where('nama_outlet','LIKE',"%".$request->search."%")->with('transaksis')->paginate();
+        } else {
+
+            $outlet = Outlett::all();
+        }
 
         return view('admin.data-o.outlet', compact('outlet'));
     }
@@ -56,8 +61,14 @@ class OutletController extends Controller
        $outlet =Outlett::find($id);
        $outlet->update($request->all());
 
-
-
        return redirect()->route('outlet')->with('success', 'Data pelanggan berhasil diubah.');
+    }
+
+    // FUNGSI DELETE
+    public function delete(Request $request, $id)
+    {
+        $outlet = Outlett::find($id)->delete();
+
+        return redirect()->route('outlet')->with('success', 'Data outlet berhasil dihapus.');
     }
 }

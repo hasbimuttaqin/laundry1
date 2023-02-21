@@ -24,7 +24,6 @@
             <span>Registrasi Pelanggan</span></a>
     </li>
 
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
@@ -37,9 +36,15 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('member') }}">Pelanggan</a>
                 <a class="collapse-item" href="{{ route('outlet')}}">Outlet</a>
-                <a class="collapse-item" href="forgot-password.html">Produk</a>
+                <a class="collapse-item" href="{{ route('produk') }}">Produk</a>
             </div>
         </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('transaksi') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Transaksi</span></a>
     </li>
 
     <!-- Divider -->

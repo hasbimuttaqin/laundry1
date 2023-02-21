@@ -12,7 +12,7 @@ class MemberController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $data = Member::where('nama','LIKE',"%".$request->search."%")->paginate();
+            $data = Member::where('nama','LIKE',"%".$request->search."%")->with('transaksis')->paginate();
         } else {
             $data = Member::all();
         }

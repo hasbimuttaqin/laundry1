@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Data Outlet</title>
+    <title>Data Transaksi</title>
 
     @include('template.head')
 
@@ -33,7 +33,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Outlet</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Transaksi</h1>
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -42,10 +42,10 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Outlet</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Transaksi</h6>
 
             {{-- FORM SEARCH --}}
-            <form action="/outlet" method="GET" class="d-none d-sm-inline-block  align-items-center">
+            <form action="/produk" method="GET" class="d-none d-sm-inline-block  align-items-center">
             <div class="input-group">
                 <input type="search" class="form-control bg-light border-0 small" placeholder="Search for..." name="search" autofocus>
                 <div class="input-group-append">
@@ -57,7 +57,7 @@
            </form>
          {{-- END SEARCH --}}
 
-            <a href="/tambahdataoutlet" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            <a href="/tambahtransaksi" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
         </div>
         <div class="card-body">
@@ -66,35 +66,62 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Outlet</th>
-                            <th>Alamat Outlet</th>
-                            <th>No Telp</th>
+                            <th>Kode Invoice</th>
+                            <th>Outlet</th>
+                            <th>Nama Member</th>
+                            <th>Nama Produk</th>
+                            <th>Qty</th>
+                            <th>Tanggal Transaksi</th>
+                            <th>Batas Waktu</th>
+                            <th>Tanggal Bayar</th>
+                            <th>Biaya Tambahan</th>
+                            <th>Diskon%</th>
+                            <th>Pajak%</th>
+                            <th>Status</th>
+                            <th>Pembayaran</th>
+                            <th>Ket</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        @php
-                            $no = 1
-                        @endphp
-
-                     @foreach ($outlet as $item)
+                    @foreach ($transaksi as $item)
 
                         <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $item->nama_outlet }}</td>
-                            <td>{{ $item->alamat_outlet }}</td>
-                            <td>{{ $item->no_telp }}</td>
+                            <td>1</td>
+                            <td>{{ $item->kd_invoice }}</td>
+                            <td>{{ $item->outletts->nama_outlet}}</td>
+                            <td>{{ $item->members->nama }}</td>
+                            <td>{{ $item->produks->nama_paket }}</td>
+                            <td>{{ $item->qty }}</td>
+                            <td>{{ $item->tgl }}</td>
+                            <td>{{ $item->batas_waktu }}</td>
+                            <td>{{ $item->tgl_bayar }}</td>
+                            <td>Rp.{{ $item->biaya_tambahan }}</td>
+                            <td>{{ $item->diskon }}%</td>
+                            <td>{{ $item->pajak }}</td>
                             <td>
-                                <a href="/editoutlet/{{ $item->id }}" class="btn btn-success">
-                                    <span class="text">Edit</span>
+                                {{ $item->status }}
+                                <a href="/editstatustransaksi/{{ $item->id }}" class="btn btn-warning mt-2">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i>
+                                </a></td>
+                            <td>
+                                {{ $item->dibayar }}
+                                <a href="/editpembayarantransaksi/{{ $item->id }}" class="btn btn-warning mt-2">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i>
                                 </a>
-                                @if (count($item->transaksis) > 1)
-                                <a href="/deleteoutlet/{{ $item->id }}>" class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?')">
-                                    <span class="text">Delete</span>
+                            </td>
+                            <td>{{ $item->keterangan }}</td>
+                            <td>
+                                <a href="/edittransaksi/{{ $item->id }}" class="btn btn-success mb-2">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i>
                                 </a>
-                                @endif
+
+                                </a>
+                                <a href="/invoice/{{ $item->id }}" class="btn btn-info">
+                                    <i class="fas fa-print fa-sm text-white-50"></i>
+                                </a>
                             </td>
                         </tr>
 

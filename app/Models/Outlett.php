@@ -16,4 +16,14 @@ class Outlett extends Model
         'alamat_outlet',
         'no_telp'
     ];
+
+    public function produks()
+    {
+        return $this->hasMany(Produk::class, 'id_outlet');
+    }
+
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'id_outlet');
+    }
 }

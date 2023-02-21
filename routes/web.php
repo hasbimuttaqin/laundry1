@@ -1,10 +1,15 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\RegisMemberController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\PembayaranController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -55,4 +60,36 @@ Route::post('/insertdataoutlet', [OutletController::class, 'insert'])->name('tou
 Route::get('/editoutlet/{id}', [OutletController::class, 'edit'])->name('uoutlet');
 Route::post('/ubahoutlet/{id}', [OutletController::class, 'ubah'])->name('uoutlet');
 
-Route::get('/delete/{id}', [MemberController::class, 'delete'])->name('dmember');
+Route::get('/deleteoutlet/{id}', [OutletController::class, 'delete'])->name('doutlet');
+// END CRUD
+
+// FUNGSI CRUD OUTLET
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+
+Route::get('/tambahdataproduk', [ProdukController::class, 'create'])->name('tproduk');
+Route::post('/insertdataproduk', [ProdukController::class, 'insert'])->name('tproduk.insert');
+
+Route::get('/editproduk/{id}', [ProdukController::class, 'edit'])->name('uproduk');
+Route::post('/ubahproduk/{id}', [ProdukController::class, 'ubah'])->name('uproduk.ubah');
+
+Route::get('/deleteproduk/{id}', [ProdukController::class, 'delete'])->name('dproduk');
+// END CRUD
+
+// FUNGSI CRUD TRANSAKSI
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+
+Route::get('/tambahtransaksi', [TransaksiController::class, 'create'])->name('ttransaksi');
+Route::post('/inserttransaksi', [TransaksiController::class, 'insert'])->name('ttransaksi.insert');
+
+Route::get('/edittransaksi/{id}', [TransaksiController::class, 'edit'])->name('utransaksi');
+Route::post('/ubahtransaksi/{id}', [TransaksiController::class, 'ubah'])->name('utransaksi.ubah');
+
+Route::get('/editstatustransaksi/{id}', [StatusController::class, 'edit'])->name('ustatustransaksi');
+Route::post('/ubahstatustransaksi', [StatusController::class, 'ubah'])->name('ustatustransaksi.ubah');
+
+Route::get('/editpembayarantransaksi/{id}', [PembayaranController::class, 'edit'])->name('upembayarantransaksi');
+Route::post('/ubahpembayarantransaksi', [PembayaranController::class, 'ubah'])->name('upembayarantransaksi.ubah');
+
+Route::get('/invoice/{id}', [InvoiceController::class, 'showInvoice'])->name('invoice.show');
+
+// END CRUD

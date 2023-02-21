@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Tambah Data Outlet</title>
+    <title>Edit Data Produk</title>
 
     @include('template.head')
 
@@ -33,39 +33,50 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tambah Outlet</h1>
+    <h1 class="h3 mb-2 text-gray-800">Edit Produk</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tambah Data Outlet</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Edit Data Produk</h6>
 
         </div>
         <div class="card-body">
 
-          <form action="/insertdataoutlet" method="POST">
+          <form action="{{ route('uproduk.ubah', $produk->id )}}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="nama" class="form-label">Nama Outlet</label>
-                <input type="text" class="form-control" id="nama" name="nama_outlet">
-                {{-- @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                @enderror --}}
+                <label for="nama" class="form-label">Outlet</label>
+                <select class="form-select" aria-label="Default select example" name="id_outlet" disabled>
+                    <option selected value="{{ $produk->id_outlet }}">{{ $produk->outletts->nama_outlet }}</option>
+                      @foreach ($outlet as $item)
+                         <option value="{{ $item->id }}">{{ $item->nama_outlet}}</option>
+                      @endforeach
+                  </select>
               </div>
 
-            <div class="mb-4">
-                <label for="alamat" class="form-label">Alamat Outlet</label>
-                <input type="text" class="form-control" id="alamat" name="alamat_outlet">
+              <div class="mb-4">
+                <label for="alamat" class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" id="alamat" name="nama_paket" value="{{ $produk->nama_paket }}">
               </div>
 
               <div class="mb-3">
-                <label for="notlp" class="form-label">No Telpon</label>
-                <input type="number" class="form-control" id="notelp" name="no_telp">
+                <label for="jeniskelamin" class="form-label">Jenis Produk</label>
+                <select class="form-select" aria-label="Default select example" name="jenis">
+                    <option selected>{{ $produk->jenis }}</option>
+                    <option value="kiloan">kiloan</option>
+                    <option value="selimut">selimut</option>
+                    <option value="bed_cover">bed_cover</option>
+                    <option value="kaos">kaos</option>
+                  </select>
               </div>
 
-              <a href="{{ route('outlet') }}" class="btn btn-secondary">Back</a>
+              <div class="mb-4">
+                <label for="alamat" class="form-label">Harga Produk</label>
+                <input type="number" class="form-control" id="alamat" name="harga" value="{{ $produk->harga }}">
+              </div>
+
+              <a href="{{ route('produk') }}" class="btn btn-secondary">Back</a>
               <button type="submit" class="btn btn-primary">Save</button>
           </form>
 

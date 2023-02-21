@@ -92,9 +92,11 @@
                                 <a href="/edit/{{ $row->id }}" class="btn btn-success">
                                     <span class="text">Edit</span>
                                 </a>
+                                @if (count($row->transaksis) < 1)
                                 <a href="/delete/{{ $row->id }}" class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?')">
                                     <span class="text">Delete</span>
                                 </a>
+                                @endif
                             </td>
                         </tr>
 

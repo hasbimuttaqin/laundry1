@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Data Outlet</title>
+    <title>Data Produk</title>
 
     @include('template.head')
 
@@ -33,7 +33,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Outlet</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Produk/Paket</h1>
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -42,10 +42,10 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Outlet</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Produk/Paket</h6>
 
             {{-- FORM SEARCH --}}
-            <form action="/outlet" method="GET" class="d-none d-sm-inline-block  align-items-center">
+            <form action="/produk" method="GET" class="d-none d-sm-inline-block  align-items-center">
             <div class="input-group">
                 <input type="search" class="form-control bg-light border-0 small" placeholder="Search for..." name="search" autofocus>
                 <div class="input-group-append">
@@ -57,7 +57,7 @@
            </form>
          {{-- END SEARCH --}}
 
-            <a href="/tambahdataoutlet" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            <a href="/tambahdataproduk" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
         </div>
         <div class="card-body">
@@ -66,9 +66,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Outlet</th>
-                            <th>Alamat Outlet</th>
-                            <th>No Telp</th>
+                            <th>Outlet</th>
+                            <th>Nama Produk</th>
+                            <th>Jenis Produk</th>
+                            <th>Harga Produk</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -79,22 +80,24 @@
                             $no = 1
                         @endphp
 
-                     @foreach ($outlet as $item)
+                     @foreach ($produk as $item)
 
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $item->nama_outlet }}</td>
-                            <td>{{ $item->alamat_outlet }}</td>
-                            <td>{{ $item->no_telp }}</td>
+                            <td>{{ $item->outletts->nama_outlet }}</td>
+                            <td>{{ $item->nama_paket }}</td>
+                            <td>{{ $item->jenis }}</td>
+                            <td>Rp.{{ $item->harga }}</td>
                             <td>
-                                <a href="/editoutlet/{{ $item->id }}" class="btn btn-success">
+                                <a href="/editproduk/{{ $item->id }}" class="btn btn-success">
                                     <span class="text">Edit</span>
                                 </a>
-                                @if (count($item->transaksis) > 1)
-                                <a href="/deleteoutlet/{{ $item->id }}>" class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?')">
+                                @if (count($item->transaksis) < 1)
+                                <a href="/deleteproduk/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?')">
                                     <span class="text">Delete</span>
                                 </a>
                                 @endif
+
                             </td>
                         </tr>
 

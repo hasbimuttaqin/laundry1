@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Tambah Data Outlet</title>
+    <title>Edit Pembayaran Transaksi</title>
 
     @include('template.head')
 
@@ -33,39 +33,29 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tambah Outlet</h1>
+    <h1 class="h3 mb-2 text-gray-800">Edit Pembayaran Transaksi</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tambah Data Outlet</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Edit Pembayaran Transaksi</h6>
 
         </div>
         <div class="card-body">
 
-          <form action="/insertdataoutlet" method="POST">
+          <form action="{{ route('utransaksi.ubah', $transaksi->id )}}" method="POST">
             @csrf
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama Outlet</label>
-                <input type="text" class="form-control" id="nama" name="nama_outlet">
-                {{-- @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                @enderror --}}
-              </div>
-
-            <div class="mb-4">
-                <label for="alamat" class="form-label">Alamat Outlet</label>
-                <input type="text" class="form-control" id="alamat" name="alamat_outlet">
-              </div>
 
               <div class="mb-3">
-                <label for="notlp" class="form-label">No Telpon</label>
-                <input type="number" class="form-control" id="notelp" name="no_telp">
+                <label for="dibayar" class="form-label">Pembayaran</label>
+                <select class="form-select" aria-label="Default select example" name="dibayar">
+                    <option selected>{{ $transaksi->dibayar }}</option>
+                    <option value="selesai_bayar">selesai_bayar</option>
+                    <option value="belum_bayar">belum_bayar</option>
+                  </select>
               </div>
 
-              <a href="{{ route('outlet') }}" class="btn btn-secondary">Back</a>
+              <a href="{{ route('transaksi') }}" class="btn btn-secondary">Back</a>
               <button type="submit" class="btn btn-primary">Save</button>
           </form>
 
