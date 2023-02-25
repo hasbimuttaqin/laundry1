@@ -25,6 +25,7 @@ class Transaksi extends Model
         'dibayar',
         'keterangan'
     ];
+    
 
     public function outletts()
     {
