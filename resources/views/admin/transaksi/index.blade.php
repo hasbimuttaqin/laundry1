@@ -45,7 +45,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Daftar Data Transaksi</h6>
 
             {{-- FORM SEARCH --}}
-            <form action="/produk" method="GET" class="d-none d-sm-inline-block  align-items-center">
+            <form action="/transaksi" method="GET" class="d-none d-sm-inline-block  align-items-center">
             <div class="input-group">
                 <input type="search" class="form-control bg-light border-0 small" placeholder="Search for..." name="search" autofocus>
                 <div class="input-group-append">
@@ -86,10 +86,14 @@
 
                     <tbody>
 
+                        @php
+                            $no = 1
+                        @endphp
+
                     @foreach ($transaksi as $item)
 
                         <tr>
-                            <td>1</td>
+                            <td>{{ $no++ }}</td>
                             <td>{{ $item->kd_invoice }}</td>
                             <td>{{ $item->outletts->nama_outlet}}</td>
                             <td>{{ $item->members->nama }}</td>
@@ -100,7 +104,7 @@
                             <td>{{ $item->tgl_bayar }}</td>
                             <td>Rp.{{ $item->biaya_tambahan }}</td>
                             <td>{{ $item->diskon }}%</td>
-                            <td>{{ $item->pajak }}</td>
+                            <td>{{ $item->pajak }}%</td>
                             <td>
                                 {{ $item->status }}
                                 <a href="/editstatustransaksi/{{ $item->id }}" class="btn btn-warning mt-2">
@@ -120,7 +124,7 @@
 
                                 </a>
                                 <a href="/invoice/{{ $item->id }}" class="btn btn-info">
-                                    <i class="fas fa-print fa-sm text-white-50"></i>
+                                    <i class="fas fa-file-invoice fa-sm text-white-50"></i>
                                 </a>
                             </td>
                         </tr>
@@ -151,24 +155,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('template.logoutmodal')
 
     {{-- JavaScript --}}
       @include('template.script')

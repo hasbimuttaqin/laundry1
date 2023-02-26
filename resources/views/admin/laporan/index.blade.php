@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Edit Status Transaksi</title>
+    <title>Laporan</title>
 
     @include('template.head')
 
@@ -33,33 +33,31 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Edit Status Transaksi</h1>
+    <h1 class="h3 mb-2 text-gray-800">Laporan</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit Status Transaksi</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Print Laporan</h6>
 
         </div>
         <div class="card-body">
+            <form action="{{ route('laporan.cetak') }}" method="post">
+                @csrf
+                <div class="mb-4">
+                    <label for="tglawal" class="form-label">Tanggal Awal</label>
+                    <input type="date" class="form-control" id="tgl" name="tgl">
+                  </div>
 
-          <form action="{{ route('utransaksi.ubah', $transaksi->id )}}" method="POST">
-            @csrf
+                  <div class="mb-4">
+                    <label for="tglakhir" class="form-label">Tanggal Akhir</label>
+                    <input type="date" class="form-control" id="batas_waktu" name="batas_waktu">
+                  </div>
 
-              <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <select class="form-select" aria-label="Default select example" name="status">
-                    <option selected>{{ $transaksi->status }}</option>
-                    <option value="baru">baru</option>
-                    <option value="proses">proses</option>
-                    <option value="selesai">selesai</option>
-                    <option value="diambil">diambil</option>
-                  </select>
-              </div>
+                  <button type="submit" class="btn btn-primary"> <i class="fas fa-fw fa-print"></i> Cetak Laporan</button>
 
-              <a href="{{ route('transaksi') }}" class="btn btn-secondary">Back</a>
-              <button type="submit" class="btn btn-primary">Save</button>
-          </form>
+            </form>
+
 
         </div>
     </div>

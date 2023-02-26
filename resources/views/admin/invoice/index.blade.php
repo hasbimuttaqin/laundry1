@@ -53,7 +53,7 @@
      </style>
 </head>
 <body>
-     
+
   <div class="invoice-box">
      <table cellspacing="0" cellpadding="0">
           <tr class="top">
@@ -82,13 +82,12 @@
                               <td>
                                    Kepada Member : {{ $transaksi->members->nama }} <br>
                                    No Telpon : {{ $transaksi->members->no_tlp }} <br>
-                                   Tanggal : {{ $transaksi->batas_waktu }}
+                                   Batas Tanggal Pembayaran : {{ $transaksi->batas_waktu }}
                               </td>
 
                               <td>
-                                   Web developer : Hamid <br>
-                                   Android Develover
-                                   Email : 
+                                   Nama Pegawai : Hamid <br>
+                                   Jabatan :
                               </td>
                          </tr>
                     </table>

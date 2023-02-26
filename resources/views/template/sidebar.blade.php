@@ -20,7 +20,7 @@
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('regismember') }}">
-            <i class="fas fa-fw fa-plus"></i>
+            <i class="fas fa-fw fa-user-plus"></i>
             <span>Registrasi Pelanggan</span></a>
     </li>
 
@@ -34,17 +34,23 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('member') }}">Pelanggan</a>
-                <a class="collapse-item" href="{{ route('outlet')}}">Outlet</a>
-                <a class="collapse-item" href="{{ route('produk') }}">Produk</a>
+                <a class="collapse-item" href="{{ route('member') }}"><i class="fas fa-fw fa-user"></i> Pelanggan</a>
+                <a class="collapse-item" href="{{ route('outlet')}}"><i class="fas fa-fw fa-store"></i> Outlet</a>
+                <a class="collapse-item" href="{{ route('produk') }}"><i class="fas fa-fw fa-cube"></i> Produk</a>
             </div>
         </div>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('transaksi') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-handshake"></i>
             <span>Transaksi</span></a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('laporan') }}">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Laporan</span></a>
     </li>
 
     <!-- Divider -->

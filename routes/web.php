@@ -10,6 +10,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\RegisMemberController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -91,5 +92,8 @@ Route::get('/editpembayarantransaksi/{id}', [PembayaranController::class, 'edit'
 Route::post('/ubahpembayarantransaksi', [PembayaranController::class, 'ubah'])->name('upembayarantransaksi.ubah');
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'showInvoice'])->name('invoice.show');
-
 // END CRUD
+
+Route::get('/laporan', [LaporanController::class, 'printLaporan'])->name('laporan');
+Route::post('/laporancetak', [LaporanController::class, 'cetak'])->name('laporan.cetak');
+

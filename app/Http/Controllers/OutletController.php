@@ -61,7 +61,7 @@ class OutletController extends Controller
        $outlet =Outlett::find($id);
        $outlet->update($request->all());
 
-       return redirect()->route('outlet')->with('success', 'Data pelanggan berhasil diubah.');
+       return redirect()->route('outlet')->with('success', 'Data outlet berhasil diubah.');
     }
 
     // FUNGSI DELETE

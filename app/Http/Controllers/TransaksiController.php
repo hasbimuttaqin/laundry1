@@ -11,10 +11,14 @@ use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $transaksi = Transaksi::with('outletts','members','produks')->get();
+        if($request->has('search')) {
+            $transaksi = Transaksi::where('kd_invoice','LIKE', "%".$request->search."%")->with('outletts','members','produks')->paginate();
+        } else {
+            $transaksi = Transaksi::with('outletts','members','produks')->get();
+        }
 
         return view('admin.transaksi.index', compact('transaksi'));
     }

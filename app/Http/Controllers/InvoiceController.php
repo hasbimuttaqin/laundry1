@@ -21,4 +21,5 @@ class InvoiceController extends Controller
         return view('admin.invoice.index', compact('transaksi'));
 
     }
+
 }
