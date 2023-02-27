@@ -29,12 +29,12 @@ class ProdukController extends Controller
 
     public function insert(Request $request)
     {
-        // $request->validate([
-        //     'id_outlet' => 'required',
-        //     'jenis' => 'required',
-        //     'nama_produk' => 'required',
-        //     'harga' => 'required',
-        // ]);
+        $request->validate([
+            'id_outlet' => 'required',
+            'nama_paket' => 'required',
+            'jenis' => 'required',
+            'harga' => 'required',
+        ]);
 
 
         Produk::create($request->all());
@@ -53,6 +53,12 @@ class ProdukController extends Controller
 
     public function ubah(Request $request, $id)
     {
+
+        $request->validate([
+            'nama_paket' => 'required',
+            'jenis' => 'required',
+            'harga' => 'required',
+        ]);
 
         $produk = Produk::find($id);
         $produk->update($request->all());
