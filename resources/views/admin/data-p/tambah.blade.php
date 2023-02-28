@@ -58,6 +58,9 @@
               <div class="mb-4">
                 <label for="alamat" class="form-label">Nama Produk</label>
                 <input type="text" class="form-control" id="alamat" name="nama_paket">
+                @error('nama_paket')
+                   <div class="alert alert-danger mt-2">{{ $message }}</div>
+                  @enderror
               </div>
 
               <div class="mb-3">
@@ -74,6 +77,9 @@
               <div class="mb-4">
                 <label for="alamat" class="form-label">Harga Produk</label>
                 <input type="number" class="form-control" id="alamat" name="harga">
+                @error('harga')
+                   <div class="alert alert-danger mt-2">{{ $message }}</div>
+                  @enderror
               </div>
 
               <a href="{{ route('produk') }}" class="btn btn-secondary">Back</a>

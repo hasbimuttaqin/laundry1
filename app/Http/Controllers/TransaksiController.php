@@ -36,6 +36,23 @@ class TransaksiController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+            'kd_invoice' => 'required|unique:transaksis',
+            'id_outlet' => 'required',
+            'id_member' => 'required',
+            'id_produk' => 'required',
+            'qty' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'tgl_bayar' => 'required',
+            'biaya_tambahan' => 'required',
+            'diskon' => 'required',
+            'pajak' => 'required',
+            'status' => 'required',
+            'dibayar' => 'required',
+            'keterangan' => 'required',
+        ]);
+
         Transaksi::create($request->all());
 
         return redirect()->route('transaksi')->with('success', 'Data transaksi berhasil ditambahkan. ');
@@ -54,6 +71,19 @@ class TransaksiController extends Controller
 
     public function ubah(Request $request, $id)
     {
+        $request->validate([
+            'qty' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'tgl_bayar' => 'required',
+            'biaya_tambahan' => 'required',
+            'diskon' => 'required',
+            'pajak' => 'required',
+            'status' => 'required',
+            'dibayar' => 'required',
+            'keterangan' => 'required',
+        ]);
+
         $transaksi = Transaksi::find($id);
         $transaksi->update($request->all());
 

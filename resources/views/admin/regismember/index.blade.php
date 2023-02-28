@@ -56,11 +56,17 @@
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Pelanggan</label>
                             <input type="text" class="form-control" id="nama" name="nama">
+                            @error('nama')
+                             <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
                           </div>
 
                         <div class="mb-4">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat">
+                            @error('alamat')
+                             <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
                           </div>
 
                         <div class="mb-3">
@@ -75,6 +81,9 @@
                           <div class="mb-3">
                             <label for="notlp" class="form-label">No Telpon</label>
                             <input type="number" class="form-control" id="notelp" name="no_tlp">
+                            @error('no_tlp')
+                             <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
                           </div>
                           <button type="submit" class="btn btn-primary">Save</button>
                       </form>

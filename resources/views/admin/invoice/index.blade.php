@@ -50,6 +50,13 @@
                 .invoice-box table tr.item td{
                     border-bottom: 1px solid #eee;
                 }
+
+                @media print{
+                    .no-print{
+                        display: none;
+                    }
+                }
+
      </style>
 </head>
 <body>

@@ -47,7 +47,7 @@
             @csrf
             <div class="mb-4">
                 <label for="invoice" class="form-label">Kode Invoice</label>
-                <input type="text" class="form-control" id="invoice" name="kd_invoice" value="{{ $transaksi->kd_invoice }}">
+                <input type="text" class="form-control" id="invoice" name="kd_invoice" value="{{ $transaksi->kd_invoice }}" disabled>
               </div>
 
               <div class="mb-3">
@@ -83,36 +83,57 @@
               <div class="mb-4">
                 <label for="qty" class="form-label">Qty</label>
                 <input type="text" class="form-control" id="qty" name="qty" value="{{ $transaksi->qty }}">
+                @error('qty')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="tgl" class="form-label">Tanggal Transaksi</label>
                 <input type="datetime-local" class="form-control" id="tgl" name="tgl" value="{{ $transaksi->tgl }}">
+                @error('tgl')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="batas_waktu" class="form-label">Batas Waktu</label>
                 <input type="datetime-local" class="form-control" id="batas_waktu" name="batas_waktu" value="{{ $transaksi->batas_waktu }}">
+                @error('batas_waktu')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="tgl_bayar" class="form-label">Tanggal Bayar</label>
                 <input type="datetime-local" class="form-control" id="tgl_bayar" name="tgl_bayar" value="{{ $transaksi->tgl_bayar }}">
+                @error('tgl_bayar')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="biaya_tambahan" class="form-label">Biaya Tambahan</label>
                 <input type="number" class="form-control" id="biaya_tambahan" name="biaya_tambahan" value="{{ $transaksi->biaya_tambahan }}">
+                @error('biaya_tambahan')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="diskon" class="form-label">Diskon%</label>
                 <input type="number" class="form-control" id="diskon" name="diskon" value="{{ $transaksi->diskon }}">
+                @error('diskon')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-4">
                 <label for="pajak" class="form-label">Pajak%</label>
                 <input type="number" class="form-control" id="pajak" name="pajak" value="{{ $transaksi->pajak }}">
+                @error('pajak')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-3">
@@ -138,6 +159,9 @@
               <div class="mb-4">
                 <label for="keterangan" class="form-label">Keterangan</label>
                 <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ $transaksi->keterangan }}">
+                @error('keterangan')
+                  <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <a href="{{ route('transaksi') }}" class="btn btn-secondary">Back</a>

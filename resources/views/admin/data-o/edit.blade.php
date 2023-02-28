@@ -48,16 +48,25 @@
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Outlet</label>
                 <input type="text" class="form-control" id="nama_outlet" name="nama_outlet" value="{{ $outlet->nama_outlet }}">
+                @error('nama_outlet')
+                 <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
             <div class="mb-4">
                 <label for="alamat" class="form-label">Alamat Outlet</label>
                 <input type="text" class="form-control" id="alamat_outlet" name="alamat_outlet" value="{{ $outlet->alamat_outlet }}">
+                @error('alamat_outlet')
+                 <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="mb-3">
                 <label for="notlp" class="form-label">No Telpon</label>
                 <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{ $outlet->no_telp }}">
+                @error('no_telp')
+                 <div class="alert alert-danger mt-2">{{ $message }}</div>
+                @enderror
               </div>
 
               <a href="{{ route('outlet') }}" class="btn btn-secondary">Back</a>

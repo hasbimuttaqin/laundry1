@@ -24,7 +24,7 @@ class LoginController extends Controller
             if ($user->role == 'admin') {
                 return redirect('dashboard');
             } elseif ($user->role == 'kasir') {
-                echo "ini kasir";
+                return redirect('regis');
             } elseif ($user->role == 'owner') {
                 echo "ini owner";
             }

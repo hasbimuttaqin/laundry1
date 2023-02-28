@@ -1,6 +1,13 @@
 <html>
 <head>
     <title>Laporan Transaksi</title>
+    <style type="text/css">
+          @media print{
+            .no-print{
+                display: none;
+            }
+          }
+    </style>
 </head>
 <body>
     <h1>Laporan Transaksi</h1>

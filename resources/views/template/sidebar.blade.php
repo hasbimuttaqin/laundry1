@@ -11,12 +11,19 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+ @if (Auth::user()->role== 'admin')
+ <li class="nav-item">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+</li>
+ @endif
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('regismember') }}">
@@ -41,11 +48,17 @@
         </div>
     </li>
 
-    <li class="nav-item">
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('transaksi') }}">
+        <i class="fas fa-fw fa-handshake"></i>
+        <span>Transaksi</span></a>
+</li>
+
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('transaksi') }}">
             <i class="fas fa-fw fa-handshake"></i>
             <span>Transaksi</span></a>
-    </li>
+    </li> --}}
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('laporan') }}">
