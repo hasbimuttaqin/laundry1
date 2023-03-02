@@ -26,10 +26,16 @@ class LoginController extends Controller
             } elseif ($user->role == 'kasir') {
                 return redirect('regis');
             } elseif ($user->role == 'owner') {
-                echo "ini owner";
+                return redirect('laporan');
             }
 
         }
           echo "gagal";
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

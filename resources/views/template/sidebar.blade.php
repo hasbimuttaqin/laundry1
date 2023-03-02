@@ -24,35 +24,42 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li> --}}
+@if (Auth::user()->role == 'kasir')
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('regismember') }}">
+        <i class="fas fa-fw fa-user-plus"></i>
+        <span>Registrasi Pelanggan</span></a>
+</li>
+@endif
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('regismember') }}">
-            <i class="fas fa-fw fa-user-plus"></i>
-            <span>Registrasi Pelanggan</span></a>
-    </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Master Data</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('member') }}"><i class="fas fa-fw fa-user"></i> Pelanggan</a>
-                <a class="collapse-item" href="{{ route('outlet')}}"><i class="fas fa-fw fa-store"></i> Outlet</a>
-                <a class="collapse-item" href="{{ route('produk') }}"><i class="fas fa-fw fa-cube"></i> Produk</a>
-            </div>
+@if (Auth::user()->role == 'admin')
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+        aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Master Data</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('member') }}"><i class="fas fa-fw fa-user"></i> Pelanggan</a>
+            <a class="collapse-item" href="{{ route('outlet')}}"><i class="fas fa-fw fa-store"></i> Outlet</a>
+            <a class="collapse-item" href="{{ route('produk') }}"><i class="fas fa-fw fa-cube"></i> Produk</a>
         </div>
-    </li>
+    </div>
+</li>
+@endif
 
+
+@if (Auth::user()->role == 'admin' || Auth::user()->role == 'kasir')
 <li class="nav-item">
     <a class="nav-link" href="{{ route('transaksi') }}">
         <i class="fas fa-fw fa-handshake"></i>
         <span>Transaksi</span></a>
 </li>
+@endif
 
     {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('transaksi') }}">
@@ -60,11 +67,14 @@
             <span>Transaksi</span></a>
     </li> --}}
 
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('laporan') }}">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Laporan</span></a>
-    </li>
+@if (Auth::user()->role == 'admin' || Auth::user()->role == 'kasir' || Auth::user()->role == 'owner')
+<li class="nav-item ">
+    <a class="nav-link" href="{{ route('laporan') }}">
+        <i class="fas fa-fw fa-file"></i>
+        <span>Laporan</span></a>
+</li>
+@endif
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

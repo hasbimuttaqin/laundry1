@@ -97,3 +97,4 @@ Route::get('/invoice/{id}', [InvoiceController::class, 'showInvoice'])->name('in
 Route::get('/laporan', [LaporanController::class, 'printLaporan'])->name('laporan');
 Route::post('/laporancetak', [LaporanController::class, 'cetak'])->name('laporan.cetak');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

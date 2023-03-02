@@ -93,8 +93,8 @@
                               </td>
 
                               <td>
-                                   Nama Pegawai : Hamid <br>
-                                   Jabatan :
+                                   Nama Pegawai : {{ Auth::user()->nama }} <br>
+                                   Jabatan : {{ Auth::user()->username }}
                               </td>
                          </tr>
                     </table>

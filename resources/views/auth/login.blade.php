@@ -43,11 +43,17 @@
                         <div class="form-outline mb-4">
                           <input type="text" id="form2Example17" class="form-control form-control-lg" name="username"/>
                           <label class="form-label" for="form2Example17">Username</label>
+                          @error('username')
+                           <div class="alert alert-danger mt-2">{{ $message }}</div>
+                          @enderror
                         </div>
 
                         <div class="form-outline mb-4">
                           <input type="password" id="form2Example27" class="form-control form-control-lg" name="password"/>
                           <label class="form-label" for="form2Example27">Password</label>
+                          @error('password')
+                           <div class="alert alert-danger mt-2">{{ $message }}</div>
+                          @enderror
                         </div>
 
                         <div class="pt-1 mb-4">
